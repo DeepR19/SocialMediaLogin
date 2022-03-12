@@ -3,6 +3,7 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const cors = require("cors");
 const app = express();
+require("./passpost");
 
 app.use(
     cookieSession({
@@ -22,6 +23,8 @@ app.use(
         credentials: true
     })
 );
+
+app.use("/auth", require("./routes/router"));
 
 app.listen("4000", ()=>{
     console.log("Server is start on port: 4000")
